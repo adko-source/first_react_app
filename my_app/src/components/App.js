@@ -51,6 +51,7 @@ class App extends Component {
             <Clicker text={this.props.text} count={this.state.count} icons={this.state.icons}/>
             <button onClick={this.changeCountState}>Increase Number</button>
             <button onClick={this.getRandomIcon}>Add Random Icon</button>
+            <Lottery title="LOTTO" size={6} />
     
            </div>
           )
