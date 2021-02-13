@@ -1,5 +1,5 @@
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Clicker from './Clicker';
 import Lottery from './Lottery';
 import '../App.css';
@@ -19,14 +19,14 @@ class App extends Component {
     this.state = {
       count: 0,
       icons: [
-        	"car",
-			    "city",
-			    "cloud",
-			    "couch",
-			    "baby",
-			    "bone",
-			    "bell",
-			    "at"
+        "car",
+        "city",
+        "cloud",
+        "couch",
+        "baby",
+        "bone",
+        "bell",
+        "at"
       ]
     };
   };
@@ -34,27 +34,28 @@ class App extends Component {
   changeCountState() {
     console.log(this)
     // Pass function to setState when updating state based on the previous state
-    this.setState(prevState => ({count: prevState.count + 1}));
+    this.setState(prevState => ({ count: prevState.count + 1 }));
   };
 
   getRandomIcon() {
     let currentIcons = [...this.state.icons];
     // Get random item from array
-    let newIcon = currentIcons[Math.floor(Math.random()*currentIcons.length)];
-    this.setState({icons: [...this.state.icons, newIcon]});
+    let newIcon = currentIcons[Math.floor(Math.random() * currentIcons.length)];
+    this.setState({ icons: [...this.state.icons, newIcon] });
   }
 
   render() {
     return (
-            <div className="App">
-            {this.props.text}     
-            <Clicker text={this.props.text} count={this.state.count} icons={this.state.icons}/>
-            <button onClick={this.changeCountState}>Increase Number</button>
-            <button onClick={this.getRandomIcon}>Add Random Icon</button>
-            <Lottery title="LOTTO" size={6} />
-    
-           </div>
-          )
+      <div className="App">
+        {this.props.text}
+        <Clicker text={this.props.text} count={this.state.count} icons={this.state.icons} />
+        <button onClick={this.changeCountState}>Increase Number</button>
+        <button onClick={this.getRandomIcon}>Add Random Icon</button>
+        <Lottery />
+        <Lottery title="MINI DAILY" size={4} max={10} />
+
+      </div>
+    )
   };
 };
 
