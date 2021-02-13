@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import '../Ball.css'
+import '../css/Ball.css'
 
 
 const Ball = (props) => {

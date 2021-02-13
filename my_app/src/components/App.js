@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import Clicker from './Clicker';
 import Lottery from './Lottery';
-import '../App.css';
+import '../css/App.css'
 
 class App extends Component {
   static defaultProps = {
