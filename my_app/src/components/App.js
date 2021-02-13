@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import Clicker from './Clicker';
 import Lottery from './Lottery';
+import CoinFlip from './CoinFlip';
 import '../css/App.css';
 import coinTails from '../images/twonie_tails.jpg';
 import coinHeads from '../images/twonie_heads.jpg';
@@ -55,8 +56,7 @@ class App extends Component {
         <button onClick={this.getRandomIcon}>Add Random Icon</button>
         <Lottery />
         <Lottery title="MINI DAILY" size={4} max={10} />
-        <img src={coinHeads}></img>
-        <img src={coinTails}></img>
+        <CoinFlip />
       </div>
     )
   };
