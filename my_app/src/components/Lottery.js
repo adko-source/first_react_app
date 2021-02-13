@@ -10,23 +10,12 @@ class Lottery extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            lottoNums: [],
+            // Create empty array with a given length
+            lottoNums: Array.from({ length: this.props.size }),
         };
         this.generateLotto = this.generateLotto.bind(this);
         this.increaseNum = this.increaseNum.bind(this);
 
-    };
-
-    generateLotto() {
-        let lottoSize = Math.min(6, this.props.size);
-        let numberMax = this.props.max;
-        let newNums = [];
-        for (let i = 0; i < lottoSize; i++) {
-            let newNum = Math.floor(Math.random() * numberMax);
-            newNums.push(newNum);
-
-        };
-        this.setState({ lottoNums: [...newNums] });
     };
 
     // When updating an array or obj in state 
@@ -40,14 +29,28 @@ class Lottery extends Component {
         this.setState((prevState) => ({ num: prevState.num + 1 }))
     };
 
+    generateLotto() {
+        let lottoSize = Math.min(6, this.props.size);
+        let numberMax = this.props.max;
+        let newNums = [];
+        for (let i = 0; i < lottoSize; i++) {
+            let newNum = Math.floor(Math.random() * numberMax) + 1;
+            newNums.push(newNum);
+
+        };
+        this.setState({ lottoNums: [...newNums] });
+    };
+
+
+
     render() {
         const lottoNums = this.state.lottoNums;
         return (
             <div>
                 {<h1>{this.props.title}</h1>}
-                <p>{lottoNums.map(num => " " + num)}</p>
-                <button onClick={this.generateLotto}>Generate</button>
                 <p>{lottoNums.map(num => <Ball number={num} />)}</p>
+                <button onClick={this.generateLotto}>Generate</button>
+
             </div>
         );
     };

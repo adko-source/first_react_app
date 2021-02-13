@@ -1,11 +1,12 @@
 
 import React, { Component } from 'react';
-import Lottery from './Lottery';
+import '../Ball.css'
+
 
 const Ball = (props) => {
 
     return (
-        <div>
+        <div className="Ball">
             {props.number}
         </div>
     )
