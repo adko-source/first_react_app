@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './css/index.css'
 import App from './components/App.js';
 import reportWebVitals from './reportWebVitals';
+import { getRandomIndex } from './helpers';
 
 ReactDOM.render(
   <React.StrictMode>

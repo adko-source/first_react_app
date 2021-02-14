@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Clicker from './Clicker';
 import Lottery from './Lottery';
 import CoinFlip from './CoinFlip';
+import ColourContainer from './ColourContainer';
 import '../css/App.css';
 import coinTails from '../images/twonie_tails.jpg';
 import coinHeads from '../images/twonie_heads.jpg';
@@ -57,30 +58,10 @@ class App extends Component {
         <Lottery />
         <Lottery title="MINI DAILY" size={4} max={10} />
         <CoinFlip />
+        <ColourContainer />
       </div>
     )
   };
 };
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
 
 export default App;
