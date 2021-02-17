@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class Clicker extends Component {
     constructor(props) {
@@ -7,14 +7,14 @@ class Clicker extends Component {
     render() {
         let icons = this.props.icons;
 
-        return(
+        return (
             <div>
-            <p>Text is: {this.props.text}</p>
-            <p>Count is: {this.props.count}</p>
-            {this.props.count === 7 && <p>7!</p>}
-            <p>{icons.map(i => <i class={`fas fa-${i}`}></i>)}</p>
+                <p>Text is: {this.props.text}</p>
+                <p>Count is: {this.props.count}</p>
+                {this.props.count === 7 && <p>7!</p>}
+                <p>{icons.map((i, index) => <i key={index} className={`fas fa-${i}`}></i>)}</p>
             </div>
-              )
+        )
     };
 };
 

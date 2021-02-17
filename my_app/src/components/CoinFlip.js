@@ -3,6 +3,8 @@ import '../css/CoinFlip.css';
 import tails from '../images/twonie_tails.jpg';
 import heads from '../images/twonie_heads.jpg';
 
+
+
 class CoinFlip extends Component {
     static defaultProps = {
         maxFlips: 10,
@@ -38,7 +40,7 @@ class CoinFlip extends Component {
         let currentFlips = this.state.currentFlips;
         return (
             <div className="CoinFlip">
-                <img src={this.state.currentSide}></img>
+                <img className="CoinFlip-img" src={this.state.currentSide}></img>
                 <p><button onClick={this.flipCoin}>Flip Coin</button></p>
                 {currentFlips >= 1 && <p>Out of <b>{currentFlips}</b> {currentFlips === 1 ? "flip" : "flips"} there have been <b>{this.state.headsCount}</b> heads and <b>{this.state.tailsCount}</b> tails</p>}
             </div>

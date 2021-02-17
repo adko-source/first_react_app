@@ -23,7 +23,7 @@ class ColourContainer extends Component {
             "skyblue",
             "limegreen"
         ],
-        tiles: 16
+        tiles: 16,
     };
     constructor(props) {
         super(props);
@@ -31,13 +31,15 @@ class ColourContainer extends Component {
 
         };
     }
+
     render() {
         let colours = this.props.colours;
         let tiles = Array.from({ length: this.props.tiles });
+        console.log(tiles);
         return (
-            <div className="ColourContainer">
-                {tiles.map(() => <Tile colours={colours} />)}
-            </div>
+            <section className="ColourContainer">
+                {tiles.map((i, index) => <Tile key={index} colours={colours} />)}
+            </section>
 
         )
     }

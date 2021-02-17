@@ -49,9 +49,10 @@ class Lottery extends Component {
         return (
             <div className="Lottery">
                 {<h1>{this.props.title}</h1>}
-                <p>{lottoNums.map(num => <Ball number={num} />)}</p>
-                <button onClick={this.generateLotto}>Generate</button>
-
+                {lottoNums.map((num, index) => <Ball key={index} number={num} />)}
+                <p>
+                    <button className="Lottery-button" onClick={this.generateLotto}>Generate</button>
+                </p>
             </div>
         );
     };
