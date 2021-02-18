@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import Clicker from './Clicker';
 import Lottery from './Lottery';
@@ -6,6 +5,7 @@ import CoinFlip from './CoinFlip';
 import NumberList from './NumberList';
 import ColourContainer from './ColourContainer';
 import WisdomDispener from './WisdomDispenser';
+import Hangman from './Hangman';
 import '../css/App.css';
 import coinTails from '../images/twonie_tails.jpg';
 import coinHeads from '../images/twonie_heads.jpg';
@@ -73,6 +73,7 @@ class App extends Component {
         <Lottery title="MINI DAILY" size={4} max={10} />
         <CoinFlip />
         <ColourContainer />
+        <Hangman />
       </div>
     )
   };
