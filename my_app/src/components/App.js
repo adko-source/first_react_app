@@ -7,12 +7,10 @@ import ColourContainer from './ColourContainer';
 import WisdomDispener from './WisdomDispenser';
 import Hangman from './Hangman';
 import '../css/App.css';
-import coinTails from '../images/twonie_tails.jpg';
-import coinHeads from '../images/twonie_heads.jpg';
 
 class App extends Component {
   static defaultProps = {
-    text: "HELLOOO WORLD"
+    text: "State Exercices"
   };
   constructor() {
     super();

@@ -11,7 +11,7 @@ class NumberList extends Component {
         super(props);
         this.removeItem = this.removeItem.bind(this);
         this.state = {
-            nums: [10, 20, 50, 300, 200, 400]
+            nums: [1, 2, 3, 4, 5, 6]
 
         };
     };

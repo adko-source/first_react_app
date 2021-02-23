@@ -33,6 +33,13 @@ console.log(arr2);
 let arr3 = [{ id: 1, colour: "red" }, { id: 2, colour: "blue" }];
 arr3.map(i => console.log(i.id));
 
+function test() {
+  return "Hell"
+}
+
+console.log('Below')
+console.log(test() === "Hello")
+
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
