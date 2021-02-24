@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { getRandomItem } from '../helpers.js';
+import { getRandomItemFromArray } from '../helpers.js';
 import '../css/WisdomDispenser.css';
 
 
@@ -20,7 +20,7 @@ function keyUpHandler(event) {
 
 function WisdomDispener(props) {
 
-    let wisdom = getRandomItem(wordsOfWisdom);
+    let wisdom = getRandomItemFromArray(wordsOfWisdom);
     return (
         <div className="WisdomDispenser" onMouseEnter={() => console.log(wisdom)}>
             <textarea onKeyUp={keyUpHandler}></textarea>

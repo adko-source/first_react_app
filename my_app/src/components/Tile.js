@@ -1,5 +1,5 @@
 import { Component, useState } from 'react';
-import { getRandomItem } from '../helpers.js';
+import { getRandomItemFromArray } from '../helpers.js';
 import '../css/Tile.css';
 
 // class Tile extends Component {
@@ -36,13 +36,13 @@ import '../css/Tile.css';
 
 const Tile = (props) => {
     const propColours = props.colours;
-    const firstColour = propColours[Math.floor(Math.random() * propColours.length)];
+    const firstColour = getRandomItemFromArray(propColours);
     const [intialColour, setColour] = useState(firstColour);
 
     function changeColour() {
         let newColour;
         do {
-            newColour = propColours[Math.floor(Math.random() * propColours.length)];
+            newColour = getRandomItemFromArray(propColours);
             console.log(newColour);
         } while (intialColour === newColour);
         setColour(newColour);

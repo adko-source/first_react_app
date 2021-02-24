@@ -1,6 +1,6 @@
 import { Component } from 'react';
-import { getRandomItem } from '../helpers.js';
 import '../css/Hangman.css';
+import { randomWord } from '../words.js'
 import hangman0 from '../images/0.jpg';
 import hangman1 from '../images/1.jpg';
 import hangman2 from '../images/2.jpg';
@@ -15,7 +15,7 @@ class Hangman extends Component {
     static defaultProps = {
         maxWrong: 6,
         images: [hangman0, hangman1, hangman2, hangman3, hangman4, hangman5, hangman6],
-        word: "apples"
+        word: randomWord()
         
     };
     constructor(props) {
@@ -23,6 +23,8 @@ class Hangman extends Component {
         this.generateButtons = this.generateButtons.bind(this);
         this.handleGuess = this.handleGuess.bind(this);
         this.guessedWord = this.guessedWord.bind(this);
+        this.handleClick = this.handleClick.bind(this);
+        this.restart = this.restart.bind(this);
 
         this.state = {
             guessed: new Set(),
@@ -35,10 +37,8 @@ class Hangman extends Component {
     guessedWord() {
         return this.state.answer
         .split("")
-        .map(letter => (this.state.guessed.has(letter) ? letter : "__"));
+        .map(letter => (this.state.guessed.has(letter) ? letter : "__  "));
     }
-
-    
 
     /** handleGuest: handle a guessed letter:
     - add to guessed letters
@@ -55,13 +55,26 @@ class Hangman extends Component {
         console.log(this.guessedWord())
     };
 
+    restart() {
+        this.setState({
+            guessed: new Set(),
+            wrongGuesses: 0,
+            answer: randomWord()
+
+        })
+    }
+
+    handleClick() {
+        this.restart();
+    }
+
     /** generateButtons: return array of letter buttons to render */
     generateButtons() {
         return "abcdefghijklmnopqrstuvwxyz".split("").map(letter => (
             <button key={letter}
                 value={letter}
                 onClick={this.handleGuess}
-                disabled={this.state.guessed.has(letter) || this.state.wrongGuesses === 6 || !this.guessedWord().includes("__")  }>
+                disabled={this.state.guessed.has(letter) || this.state.wrongGuesses === this.props.maxWrong || !this.guessedWord().includes("__  ")  }>
                 {letter}
             </button>
         ));
@@ -71,20 +84,15 @@ class Hangman extends Component {
         let wrongGuesses = this.state.wrongGuesses;
         return (
             <div className="Hangman">
+                <p style={{fontWeight: "bold", fontSize: "40px"}}>Hangman Game</p>
                 <p>Wrong guesses: {wrongGuesses}</p>
-                <img src={
-                    wrongGuesses === 0 ? hangman0 : wrongGuesses === 1 
-                    ? hangman1 : wrongGuesses === 2 
-                    ? hangman2 : wrongGuesses === 3 
-                    ? hangman3 : wrongGuesses === 4 
-                    ? hangman4 : wrongGuesses === 5
-                    ? hangman6 : hangman6
-                    } />
-                <p style={{fontSize: "40px", color: "red"}}>{!this.guessedWord().includes("__") && "Winner! " + "😻"  }</p>
-                <p className="Hangman-word">{wrongGuesses < 6 ? this.guessedWord() : "Nice try. Play again soon :)"}</p>
-
-                <p>{this.generateButtons()}</p>
+                <img alt={`Guess ${wrongGuesses} of ${this.props.maxWrong}`} src={this.props.images[wrongGuesses]} />
+                <p style={{fontSize: "40px", color: "red"}}>{!this.guessedWord().includes("__  ") && "Winner! " + "😻"  }</p>
+                <p >{wrongGuesses < this.props.maxWrong ? this.guessedWord() : wrongGuesses === 0 ? "" : `The answer was ${this.state.answer}. Play again soon! 😎`}</p>
+                <p>{wrongGuesses < this.props.maxWrong ? this.generateButtons() : `The answer was ${this.state.answer}. Play again soon! 😎`}</p>
+                <button onClick={this.handleClick}>Restart</button>
             </div>
+            
         );
 
     };
