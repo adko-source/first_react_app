@@ -6,6 +6,7 @@ import NumberList from './NumberList';
 import ColourContainer from './ColourContainer';
 import WisdomDispener from './WisdomDispenser';
 import Hangman from './Hangman';
+import LightsOut from './LightsOut';
 import '../css/App.css';
 
 class App extends Component {
@@ -72,6 +73,7 @@ class App extends Component {
         <CoinFlip />
         <ColourContainer />
         <Hangman />
+        <LightsOut />
       </div>
     )
   };

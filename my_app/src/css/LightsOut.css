@@ -1,0 +1,11 @@
+.LightsOut {
+    background-color: #282829;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+    margin-top: 20px;
+    border-style: groove;
+    width: 250px;
+    padding: 10px;
+}
