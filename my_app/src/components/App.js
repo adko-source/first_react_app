@@ -6,8 +6,10 @@ import NumberList from './NumberList';
 import ColourContainer from './ColourContainer';
 import WisdomDispener from './WisdomDispenser';
 import Hangman from './Hangman';
-import LightsOut from './LightsOut';
+import LightsOutBoard from './LightsOutBoard';
 import '../css/App.css';
+import axios from 'axios';
+import reportWebVitals from '../reportWebVitals';
 
 class App extends Component {
   static defaultProps = {
@@ -19,6 +21,7 @@ class App extends Component {
     this.changeCountState = this.changeCountState.bind(this);
     this.getRandomIcon = this.getRandomIcon.bind(this);
     this.removeLastIcon = this.removeLastIcon.bind(this);
+    this.getData = this.getData.bind(this);
     // State should be on the parent component
     // and contain as little data as possible
     // use props instead when possible
@@ -58,6 +61,18 @@ class App extends Component {
     this.setState({ icons: [...currentIconsCopy] });
   }
 
+  async getData() {
+    try {
+    let response = await axios.get('https://jsonplaceholder.typicode.com/todos/1');
+    console.log(response.data.title);
+    }
+    catch (err) {
+     console.log(err.message)
+    }
+  }
+
+ 
+
   render() {
     return (
       <div className="App">
@@ -73,7 +88,8 @@ class App extends Component {
         <CoinFlip />
         <ColourContainer />
         <Hangman />
-        <LightsOut />
+        <LightsOutBoard />
+        <button onClick={this.getData}>Get Data</button>
       </div>
     )
   };

@@ -6,7 +6,7 @@ const Tile = (props) => {
     
     
     return (
-        <div  style={{ backgroundColor: props.colour }} className="Tile" ></div >
+        <div onClick={props.flip.bind(null, props.id)} style={{ backgroundColor: props.colour }} className="Tile" ></div >
     )
 };
 
