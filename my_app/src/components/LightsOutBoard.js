@@ -13,18 +13,31 @@ class LightsOut extends Component {
     constructor(props) {
         super(props);
         this.generateGameLights = this.generateGameLights.bind(this);
-        this.flipCell = this.flipCell.bind(this);
+        this.flipCells = this.flipCells.bind(this);
         this.state = {
+            cells: (this.props.cells.map((item, index) => <LightsOutCell key={index} id={index} colour={this.randomizeCells()} flip={this.flipCells}/>))
+
             
         }
     };
 
-    generateGameLights() {
-      
+    generateGameLights(id, arr) {
+      for(let i = 0; i < arr.length ; i++) {
+        if(id === 1) {
+            this.setState(cs => cs.cells[1] = [...cs.cells, <LightsOutCell key={id} id={id} colour={"pink"} flip={this.flipCells}/>] )
+        }
+      }
     }
 
-    flipCell(id) {
+    flipCells(id) {
+        let copy = [...this.state.cells];
         console.log('flipCell Function called for ' + id)
+        console.log(copy[id].props);
+        this.setState({
+            cells: copy
+        }
+        
+    )
     }
 
     randomizeCells() {
@@ -35,8 +48,12 @@ class LightsOut extends Component {
 
     render() {
 
-        return <div className="LightsOut"> 
-            {this.props.cells.map((item, index) => <LightsOutCell key={index} id={index} colour={this.randomizeCells()} flip={this.flipCell}/>)}
+        return <div>
+        <h1>Lights Out</h1>
+        <div className="LightsOut"> 
+                    
+                    {this.state.cells}
+        </div>
         </div>
     }
 }       
