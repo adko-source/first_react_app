@@ -78,6 +78,7 @@ class App extends Component {
       <div className="App">
         {this.props.text}
         <NumberList />
+        <button onClick={this.getData}>Get Data</button>
         <Clicker text={this.props.text} count={this.state.count} icons={this.state.icons} />
         <button onClick={this.changeCountState}>Increase Count</button>
         <button onClick={this.getRandomIcon}>Add Random Icon</button>
@@ -89,7 +90,6 @@ class App extends Component {
         <ColourContainer />
         <Hangman />
         <LightsOutBoard />
-        <button onClick={this.getData}>Get Data</button>
       </div>
     )
   };

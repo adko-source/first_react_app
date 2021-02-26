@@ -1,5 +1,5 @@
 .LightsOut {
-    background-color: black;
+    background-color: white;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -8,4 +8,11 @@
     border-style: groove;
     width: 250px;
     padding: 10px;
+}
+
+.LightsOut tr {
+    width: 40px;
+    min-height: 40px;
+    border: 1px solid rgba(0, 0, 0, .2);
+    display: inline-block;
 }

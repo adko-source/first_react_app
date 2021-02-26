@@ -1,5 +1,3 @@
-import { Component } from 'react';
-import { getRandomItemFromArray } from '../helpers.js';
 import '../css/Tile.css';
 
 const Tile = (props) => {
