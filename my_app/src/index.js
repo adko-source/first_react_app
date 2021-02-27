@@ -46,6 +46,31 @@ let foo = arr5.split("");
 console.log(foo);
 foo.map(i => console.log('The item is ' + i))
 
+let rows = [];
+for(let i = 0; i < arr.length; i++) {
+  rows.push(arr[i] *100);
+}
+console.log(rows)
+
+let board = [
+  {props: {colour: "cyan"}},
+  {props: {colour: "cyan"}},
+  {props: {colour: "grey"}}
+]
+
+let b = board.every(row => row.props.colour === "cyan")
+console.log(b)
+board.map(row => console.log(row.props.colour))
+
+class Person {
+  constructor(id, nm) {
+    this.id = id;
+    this.name = nm;
+  }
+}
+
+
+
 
 
 

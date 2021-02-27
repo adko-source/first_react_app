@@ -19,7 +19,6 @@ class LightsOut extends Component {
         this.state = {
             cells: (this.props.cells.map((item, index) => <LightsOutCell key={index} id={index} colour={this.randomizeLights()} flip={this.toggleLights}/>)),
             win: false,
-            text: ["TEST 1", "TEST 2", "TEST 3"]
         }
     };
 
@@ -188,15 +187,9 @@ class LightsOut extends Component {
 
     checkForWin(arr) {
         let cells = arr;
-        let lightsOut = 0;
-        for(let i = 0; i < cells.length; i++) {
-            if(cells[i].props.colour === "#282829") {
-                lightsOut++
-            };
-        };
-        console.log(lightsOut);
-        if(lightsOut >= 18) {
-        this.setState({win: true})
+        //  If every cell component colour prop is grey set win to true
+        if(cells.every(cell => cell.props.colour === "#282829")) {
+            this.setState({win: true})
         };
     };
 
@@ -205,7 +198,7 @@ class LightsOut extends Component {
             cells: (this.props.cells.map((item, index) => <LightsOutCell key={index} id={index} colour={this.randomizeLights()} flip={this.toggleLights}/>)),
             win: false
         })
-    }
+    };
 
     render() {
         // Win is either true or false
@@ -213,7 +206,7 @@ class LightsOut extends Component {
         return (
         <div>
             <h1>Lights Out</h1>
-            <div className={!win  && "LightsOut"} > 
+            <div className={!win  ? "LightsOut" : null} > 
                 {win ? <img src="https://media.giphy.com/media/NEvPzZ8bd1V4Y/source.gif" /> : this.state.cells}
             </div>
             <button onClick={this.restartGame}>Restart Game</button>

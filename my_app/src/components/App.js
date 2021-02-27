@@ -47,11 +47,12 @@ class App extends Component {
   };
 
   getRandomIcon() {
+    // Create copy of icons array
     let currentIcons = [...this.state.icons];
     // Get random item from array
     let newIcon = currentIcons[Math.floor(Math.random() * currentIcons.length)];
     this.setState({ icons: [...this.state.icons, newIcon] });
-  }
+  };
 
   removeLastIcon() {
     let currentIconsCopy = [...this.state.icons];
@@ -59,7 +60,7 @@ class App extends Component {
     console.log(currentIconsCopy);
     console.log(newList);
     this.setState({ icons: [...currentIconsCopy] });
-  }
+  };
 
   async getData() {
     try {
@@ -69,9 +70,7 @@ class App extends Component {
     catch (err) {
      console.log(err.message)
     }
-  }
-
- 
+  };
 
   render() {
     return (
