@@ -15,10 +15,11 @@ class LightsOut extends Component {
         this.toggleLights = this.toggleLights.bind(this);
         this.toggleNeighboursLights = this.toggleNeighboursLights.bind(this);
         this.checkForWin = this.checkForWin.bind(this);
+        this.restartGame = this.restartGame.bind(this);
         this.state = {
             cells: (this.props.cells.map((item, index) => <LightsOutCell key={index} id={index} colour={this.randomizeLights()} flip={this.toggleLights}/>)),
-            arr: [10,20,30,40,50],
-            win: false
+            win: false,
+            text: ["TEST 1", "TEST 2", "TEST 3"]
         }
     };
 
@@ -194,28 +195,28 @@ class LightsOut extends Component {
             };
         };
         console.log(lightsOut);
-        if(lightsOut >= 15) {
+        if(lightsOut >= 18) {
         this.setState({win: true})
         };
     };
 
-    render() {
+    restartGame() {
+        this.setState({
+            cells: (this.props.cells.map((item, index) => <LightsOutCell key={index} id={index} colour={this.randomizeLights()} flip={this.toggleLights}/>)),
+            win: false
+        })
+    }
 
+    render() {
+        // Win is either true or false
+        let win = this.state.win;
         return (
         <div>
             <h1>Lights Out</h1>
-            <div className="LightsOut" > 
-                {this.state.win === true ? <img src="https://media.giphy.com/media/NEvPzZ8bd1V4Y/source.gif" /> : this.state.cells}
-                {/* {this.state.cells.map(() => 
-                    <table>
-                        <tbody>
-                            <tr>
-                                <LightsOutCell />
-                            </tr>
-                        </tbody>
-                    </table>
-                )} */}
+            <div className={!win  && "LightsOut"} > 
+                {win ? <img src="https://media.giphy.com/media/NEvPzZ8bd1V4Y/source.gif" /> : this.state.cells}
             </div>
+            <button onClick={this.restartGame}>Restart Game</button>
         </div>
         )
     }
