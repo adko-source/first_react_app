@@ -62,12 +62,25 @@ let b = board.every(row => row.props.colour === "cyan")
 console.log(b)
 board.map(row => console.log(row.props.colour))
 
-class Person {
-  constructor(id, nm) {
-    this.id = id;
-    this.name = nm;
-  }
+function Game(title,rating) {
+  this.title = title;
+  this.rating = rating;
 }
+
+// Add methods to the prototype so that each new Game object doesn't
+// create a new method but still has access to it
+Game.prototype.display = function() {
+  console.log(this.title + ' ' + this.rating)
+}
+
+let c = new Game('Valheim', 7);
+console.log(c)
+
+c.display()
+
+
+
+
 
 
 

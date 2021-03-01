@@ -7,8 +7,11 @@ import ColourContainer from './ColourContainer';
 import WisdomDispener from './WisdomDispenser';
 import Hangman from './Hangman';
 import LightsOutBoard from './LightsOutBoard';
+import Form from './Form';
 import '../css/App.css';
 import axios from 'axios';
+import ShoppingList from './ShoppingList';
+import ShoppingListForm from './ShoppingListForm';
 import reportWebVitals from '../reportWebVitals';
 
 class App extends Component {
@@ -22,6 +25,7 @@ class App extends Component {
     this.getRandomIcon = this.getRandomIcon.bind(this);
     this.removeLastIcon = this.removeLastIcon.bind(this);
     this.getData = this.getData.bind(this);
+    this.updateInputValue = this.updateInputValue.bind(this);
     // State should be on the parent component
     // and contain as little data as possible
     // use props instead when possible
@@ -36,7 +40,8 @@ class App extends Component {
         "bone",
         "bell",
         "at"
-      ]
+      ],
+      inputValue: ""
     };
   };
 
@@ -62,6 +67,14 @@ class App extends Component {
     this.setState({ icons: [...currentIconsCopy] });
   };
 
+  updateInputValue(e) {
+    this.setState(
+      {
+        inputValue: e.target.value
+      }
+    )
+  }
+
   async getData() {
     try {
     let response = await axios.get('https://jsonplaceholder.typicode.com/todos/1');
@@ -75,6 +88,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <ShoppingList />
+        <LightsOutBoard />
+        <Form update={this.updateInputValue} input={this.state.inputValue}/>
         {this.props.text}
         <NumberList />
         <button onClick={this.getData}>Get Data</button>
@@ -88,7 +104,6 @@ class App extends Component {
         <CoinFlip />
         <ColourContainer />
         <Hangman />
-        <LightsOutBoard />
       </div>
     )
   };

@@ -204,8 +204,11 @@ class LightsOut extends Component {
         // Win is either true or false
         let win = this.state.win;
         return (
-        <div>
-            <h1>Lights Out</h1>
+        <div className="Board">
+          <div className="Board-title">
+            <div className="neon-orange">Lights</div>
+            <div className="neon-blue">Out</div>
+          </div>
             <div className={!win  ? "LightsOut" : null} > 
                 {win ? <img src="https://media.giphy.com/media/NEvPzZ8bd1V4Y/source.gif" /> : this.state.cells}
             </div>
