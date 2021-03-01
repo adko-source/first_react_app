@@ -3,7 +3,9 @@ import ShoppingListForm from './ShoppingListForm';
 
 
 function ShoppingList(props) {
-    const [list, updateList] = useState([{item: "Eggs", qty: 12}, {item: "Eggs", qty: 110} ]);
+    // Set default props
+    const {items = [{item: "Eggs", qty: 12}, {item: "Eggs", qty: 110} ]} = props;
+    const [list, updateList] = useState(items);
     function handleClick(evt) {
         // Make a copy of state array
         let listCopy = [...list];
